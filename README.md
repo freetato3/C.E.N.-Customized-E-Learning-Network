@@ -1,2 +1,2 @@
 # C.E.N.-Customized-E-Learning-Network-is-a-Smart-Tutoring-System
-C.E.N.: Customized E-Learning Network is a Smart Tutoring System (STS) application designed to provide students with a personalized learning experience.
+C.E.N.: Customized E-Learning Network is a Smart Tutoring System (STS) application designed to provide students with a personalized learning experience. A traditional Learning Management System (LMS) presents static material regardless of learner capacity leading to student disengagement, STS addresses this gap by having an adaptive learning engine that continuously monitors a student's quiz results, difficulty levels, and progress. Based on this information, the system will recommend appropriate topics and quizzes for the student. 
