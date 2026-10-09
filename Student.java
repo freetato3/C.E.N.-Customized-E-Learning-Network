@@ -5,7 +5,6 @@ public class Student extends User{
     private int score;
     private int totalQuestions;
     private double percentage;
-    private ArrayList<String> weakTopics;
 
 
     public Student(
@@ -22,7 +21,6 @@ public class Student extends User{
         score = 0;
         totalQuestions = 0;
         percentage = 0;
-        weakTopics = new ArrayList<>();
     }
 
 
@@ -69,7 +67,6 @@ public class Student extends User{
 
 
         score = 0;
-        weakTopics.clear();
 
 
         for (int i = 0;
@@ -193,25 +190,6 @@ public class Student extends User{
             } else {
 
                 System.out.println("Incorrect.");
-
-                // Remember the topic so lessons can be recommended
-                String wrongTopic =
-                    question.getTopic().trim();
-
-                boolean alreadyListed = false;
-
-                for (String t : weakTopics) {
-
-                    if (t.equalsIgnoreCase(wrongTopic)) {
-
-                        alreadyListed = true;
-                    }
-                }
-
-                if (!alreadyListed) {
-
-                    weakTopics.add(wrongTopic);
-                }
 
                 System.out.println(
                     "Correct answer: " +
@@ -340,86 +318,6 @@ public class Student extends User{
     }
 
 
-    // ========================================================
-    // RECOMMEND LESSONS
-    // ========================================================
-    public void recommendLessons(
-            ArrayList<Lesson> lessons) {
-
-        if (!isLoggedIn()) {
-
-            System.out.println(
-                "\nPlease login first."
-            );
-
-            return;
-        }
-
-
-        if (totalQuestions == 0) {
-
-            return;
-        }
-
-
-        System.out.println(
-            "\n=========================================="
-        );
-
-        System.out.println(
-            "         RECOMMENDED LESSONS"
-        );
-
-        System.out.println(
-            "=========================================="
-        );
-
-
-        if (weakTopics.isEmpty()) {
-
-            System.out.println(
-                "No weak topics found. " +
-                "You answered everything correctly!"
-            );
-
-            return;
-        }
-
-
-        boolean found = false;
-
-
-        for (Lesson lesson : lessons) {
-
-            for (String topic : weakTopics) {
-
-                if (lesson.getTopic().trim()
-                        .equalsIgnoreCase(topic)) {
-
-                    lesson.displayLesson();
-
-                    found = true;
-
-                    break;
-                }
-            }
-        }
-
-
-        if (!found) {
-
-            System.out.println(
-                "You missed questions on: " +
-                String.join(", ", weakTopics)
-            );
-
-            System.out.println(
-                "No matching lessons are available yet."
-            );
-        }
-    }
-
-
     public int getScore() {
         return score;
     }
@@ -432,10 +330,5 @@ public class Student extends User{
 
     public double getPercentage() {
         return percentage;
-    }
-
-
-    public ArrayList<String> getWeakTopics() {
-        return new ArrayList<>(weakTopics);
     }
 }
