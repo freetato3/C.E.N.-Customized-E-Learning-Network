@@ -183,6 +183,11 @@ public class Main {
                             );
 
 
+                            student.recommendLessons(
+                                lessons
+                            );
+
+
                         } else if (
                             studentChoice.equals("2")
                         ) {
